@@ -4,6 +4,11 @@ pipeline {
         DOCCKER_TAG = "kammana/ai-leads:${getDockerTag()}"
         CONTAINER_NAME = "aileads"
     }
+    stage('scm checkout') {
+            steps {
+                git branch: 'main', credentialsId: 'git', url: 'https://github.com/vinodreddy3003/java-project'
+            }
+        }
     stages {
         stage('Maven Build') {
             steps {
